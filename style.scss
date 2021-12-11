@@ -32,12 +32,12 @@
 
 @mixin shift-by-x($x) {
    transform: translateX($x);
-   transition: transform 0.4s ease;
+   transition: transform 1s ease;
 }
 
 @mixin return-x-position {
    transform: translateX(0px);
-   transition: all 0.8 ease 0;
+   transition: transform 1s ease 0s;
 }
 
 @mixin return-y-position {
@@ -64,6 +64,9 @@
    }
 }
 
+
+
+
 body {
    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
    font-size: 14px;
@@ -86,7 +89,6 @@ p {
 a, a:focus, a:hover {
    text-decoration: none;
 }
-
 
 
 .header {
@@ -126,14 +128,16 @@ a, a:focus, a:hover {
       justify-content: flex-end;
 
       &:hover nav {
+         position: relative;
          display: block;
-         padding-top: 5px;
-
+         padding: 25px;
+         margin-top: -20px;
       }
    }
 
    &__navigation {
       display: none;
+      padding: auto;
       position: relative;
       z-index: 1;
    }
@@ -148,6 +152,7 @@ a, a:focus, a:hover {
       opacity: .75;
       font-weight: 600;
       text-transform: uppercase;
+
    }
    &__burger {
       display: block;
@@ -216,11 +221,12 @@ a, a:focus, a:hover {
 .parallax {
    width: 100%;
    min-height: 600px;
-   background-image: url(../images/header-bg.jpg);
+   background-image: url(images/header-bg.jpg);
    background-repeat: no-repeat;
    background-position: center;
    display: flex;
    justify-content: center;
+
 
    &__column {
       max-width: 1170px;
@@ -296,10 +302,19 @@ a, a:focus, a:hover {
       text-transform: uppercase;
       font-weight: 600;
       background: none;
+      
+
+      a {
+         color: #fff;
+      }
 
       &-black:hover{
             border-color: #ffce55;
             color: #ffce55;
+
+            a {
+               color: #ffce55;
+            }
          }
 
       &-yellow {
@@ -326,7 +341,7 @@ a, a:focus, a:hover {
    position: relative;
    transform: translateY(20%);
    opacity: 0;
-   transition: all 0.4s ease;
+   transition: all 0.8s ease;
 
    p {
       color: #333;
@@ -824,6 +839,7 @@ a, a:focus, a:hover {
    }
 
    &__item {
+      width: 50%;
       text-align: center;
 
       &:hover {
@@ -1152,6 +1168,7 @@ a, a:focus, a:hover {
 .contact.active {
    @include return-x-position;
 }
+
 .footer {
    z-index: 10;
    position: relative;

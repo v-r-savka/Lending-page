@@ -121,12 +121,15 @@ a, a:focus, a:hover {
 }
 
 .header__navbar:hover nav {
+  position: relative;
   display: block;
-  padding-top: 5px;
+  padding: 25px;
+  margin-top: -20px;
 }
 
 .header__navigation {
   display: none;
+  padding: auto;
   position: relative;
   z-index: 1;
 }
@@ -215,7 +218,7 @@ a, a:focus, a:hover {
 .parallax {
   width: 100%;
   min-height: 600px;
-  background-image: url(../images/header-bg.jpg);
+  background-image: url(images/header-bg.jpg);
   background-repeat: no-repeat;
   background-position: center;
   display: -webkit-box;
@@ -307,8 +310,16 @@ a, a:focus, a:hover {
   background: none;
 }
 
+.parallax__btn a {
+  color: #fff;
+}
+
 .parallax__btn-black:hover {
   border-color: #ffce55;
+  color: #ffce55;
+}
+
+.parallax__btn-black:hover a {
   color: #ffce55;
 }
 
@@ -336,8 +347,8 @@ a, a:focus, a:hover {
   -webkit-transform: translateY(20%);
           transform: translateY(20%);
   opacity: 0;
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
+  -webkit-transition: all 0.8s ease;
+  transition: all 0.8s ease;
 }
 
 .about p {
@@ -478,10 +489,10 @@ a, a:focus, a:hover {
   z-index: 3;
   -webkit-transform: translateX(-400%);
           transform: translateX(-400%);
-  -webkit-transition: -webkit-transform 0.4s ease;
-  transition: -webkit-transform 0.4s ease;
-  transition: transform 0.4s ease;
-  transition: transform 0.4s ease, -webkit-transform 0.4s ease;
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
 }
 
 .works__column {
@@ -664,8 +675,10 @@ a, a:focus, a:hover {
 .works.active {
   -webkit-transform: translateX(0px);
           transform: translateX(0px);
-  -webkit-transition: all 0.8 ease 0;
-  transition: all 0.8 ease 0;
+  -webkit-transition: -webkit-transform 1s ease 0s;
+  transition: -webkit-transform 1s ease 0s;
+  transition: transform 1s ease 0s;
+  transition: transform 1s ease 0s, -webkit-transform 1s ease 0s;
 }
 
 .fa-eye {
@@ -679,10 +692,10 @@ a, a:focus, a:hover {
   z-index: 3;
   -webkit-transform: translateX(400%);
           transform: translateX(400%);
-  -webkit-transition: -webkit-transform 0.4s ease;
-  transition: -webkit-transform 0.4s ease;
-  transition: transform 0.4s ease;
-  transition: transform 0.4s ease, -webkit-transform 0.4s ease;
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
 }
 
 .testimonials__container {
@@ -843,8 +856,10 @@ a, a:focus, a:hover {
 .testimonials.active {
   -webkit-transform: translateX(0px);
           transform: translateX(0px);
-  -webkit-transition: all 0.8 ease 0;
-  transition: all 0.8 ease 0;
+  -webkit-transition: -webkit-transform 1s ease 0s;
+  transition: -webkit-transform 1s ease 0s;
+  transition: transform 1s ease 0s;
+  transition: transform 1s ease 0s, -webkit-transform 1s ease 0s;
 }
 
 .news {
@@ -854,10 +869,10 @@ a, a:focus, a:hover {
   padding: 30px 0;
   -webkit-transform: translateX(400%);
           transform: translateX(400%);
-  -webkit-transition: -webkit-transform 0.4s ease;
-  transition: -webkit-transform 0.4s ease;
-  transition: transform 0.4s ease;
-  transition: transform 0.4s ease, -webkit-transform 0.4s ease;
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
 }
 
 .news__container {
@@ -936,6 +951,7 @@ a, a:focus, a:hover {
 }
 
 .news__item {
+  width: 50%;
   text-align: center;
 }
 
@@ -1016,8 +1032,10 @@ a, a:focus, a:hover {
 .news.active {
   -webkit-transform: translateX(0px);
           transform: translateX(0px);
-  -webkit-transition: all 0.8 ease 0;
-  transition: all 0.8 ease 0;
+  -webkit-transition: -webkit-transform 1s ease 0s;
+  transition: -webkit-transform 1s ease 0s;
+  transition: transform 1s ease 0s;
+  transition: transform 1s ease 0s, -webkit-transform 1s ease 0s;
 }
 
 .team {
@@ -1197,10 +1215,10 @@ a, a:focus, a:hover {
   width: 100%;
   -webkit-transform: translateX(400%);
           transform: translateX(400%);
-  -webkit-transition: -webkit-transform 0.4s ease;
-  transition: -webkit-transform 0.4s ease;
-  transition: transform 0.4s ease;
-  transition: transform 0.4s ease, -webkit-transform 0.4s ease;
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
 }
 
 .contact__container {
@@ -1337,8 +1355,10 @@ a, a:focus, a:hover {
 .contact.active {
   -webkit-transform: translateX(0px);
           transform: translateX(0px);
-  -webkit-transition: all 0.8 ease 0;
-  transition: all 0.8 ease 0;
+  -webkit-transition: -webkit-transform 1s ease 0s;
+  transition: -webkit-transform 1s ease 0s;
+  transition: transform 1s ease 0s;
+  transition: transform 1s ease 0s, -webkit-transform 1s ease 0s;
 }
 
 .footer {

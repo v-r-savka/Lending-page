@@ -1,34 +1,63 @@
 'use strict';
 
-
-
-
-
 function drawGraph() {
    const canvases = document.querySelectorAll('.about__canvas');
-   canvases.forEach(item => {
-      const canvas = item;
-      const ctx = canvas.getContext('2d');
-      const x = canvas.width / 2;
-      const y = canvas.height / 2;
-      const radius = 100;
-      const startAngle = 1.5 * Math.PI;
-      const value = parseInt(canvas.previousElementSibling.innerHTML);
-      const procent = value * 2 / 100;
-      const endAngle = (procent + 1.5) * Math.PI;
-      const counterClockwise = false;
 
-      ctx.beginPath();
-      ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise);
-      ctx.lineWidth = 12;
-      ctx.strokeStyle = '#f2c351';
-      ctx.stroke();
+   const parallaxSection = document.querySelector('.parallax');
+   const aboutSection = document.querySelector('.about');
+   //  ще таку умову можна задати  window.scrollY >= 600
 
-      ctx.font = "24px serif";
-      ctx.fillText(`${value}%`, 105, 140)
-   })
+   if (parallaxSection.clientHeight === aboutSection.offsetTop) {
+      canvases.forEach(item => {
+         let progress = 0;
+         let timer;
+         const canvas = item;
+         const ctx = canvas.getContext('2d');
+         const x = canvas.width / 2;
+         const y = canvas.height / 2;
+         const radius = 100;
+         const startAngle = 1.5 * Math.PI;
+         const value = parseInt(canvas.previousElementSibling.innerHTML);
+         const counterClockwise = false;
+
+         ctx.lineWidth = 12;
+         ctx.strokeStyle = '#f2c351';
+         ctx.stroke();
+
+         function drawText(x, y, text, ctx) {
+            ctx.font = "30px Arial";
+            ctx.fillText(text, x, y);
+         }
+
+         function removeText(x, y, txt_length, font_height, char_width, ctx) {
+            ctx.clearRect(x, y - font_height, char_width * txt_length, font_height);
+         }
+
+         timer = setInterval(() => {
+            window.removeEventListener('scroll', drawGraph)
+            let procent = progress * 2 / 100;
+            let endAngle = (procent + 1.5) * Math.PI;
+            let text = `${Math.abs(progress - 1)}%`;
+
+
+
+            ctx.beginPath();
+            ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+            ctx.stroke();
+            removeText(105, 140, text.length, 24, 20, ctx)
+
+            drawText(105, 140, text, ctx)
+            if (progress > value) {
+               clearInterval(timer);
+            }
+            progress++;
+         }, 60);
+      })
+   }
 }
-drawGraph();
+
+window.addEventListener('scroll', drawGraph);
+
 
 
 
@@ -70,6 +99,43 @@ function checkItems() {
    })
 }
 
+// плавний скрол для меню
+
+const smoothLinks = document.querySelectorAll('a[href^="#"]');
+smoothLinks.forEach(smoothLink => {
+   smoothLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      const id = smoothLink.getAttribute('href');
+      const targetSection = document.querySelector(id);
+
+      window.scrollBy({
+         top: targetSection.offsetTop,
+         behavior: 'smooth'
+      });
+   });
+})
+
+
+//додав плавний скрол для кнопок
+
+
+const paralaxBtns = document.querySelectorAll(".parallax__btn");
+
+paralaxBtns.forEach(btn => {
+   btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      const id = btn.firstElementChild.getAttribute('href');
+      const targetSection = document.querySelector(id);
+
+      window.scrollBy({
+         top: targetSection.offsetTop,
+         behavior: 'smooth'
+      });
+   });
+})
+
+
+
 
 //слайд шоу
 
@@ -88,7 +154,6 @@ const movePosition = slidesToScroll * itemWidth;
 for (let item of items2) {
    item.style.minWidth = `${itemWidth}px`;
 }
-
 
 function showNextSlides() {
    const itemsLeft = itemsCount - (Math.abs(position) + slidesToShow * itemWidth) / itemWidth;
