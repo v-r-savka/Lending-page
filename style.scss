@@ -1,3 +1,7 @@
+html {
+   overflow-x: hidden;
+}
+
 @font-face {
    font-family: Roboto;
    src: url(fonts/Roboto-Light.ttf);
@@ -45,15 +49,7 @@
    opacity: 1;
 }
 
-@keyframes fadeImg {
-   from {
-      opacity: 0;
-   }
 
-   to {
-      opacity: 1;
-   }
-}
 
 @keyframes change-image {
    from {
@@ -65,7 +61,15 @@
 }
 
 
+@keyframes fadeImg {
+   from {
+      opacity: 0;
+   }
 
+   to {
+      opacity: 1;
+   }
+}
 
 body {
    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -90,6 +94,53 @@ a, a:focus, a:hover {
    text-decoration: none;
 }
 
+
+
+.preloader {
+   position: fixed;
+   width: 100%;
+   height: 100%;
+   background-color: #eee;
+   z-index: 9999;
+   display: flex;
+   justify-content: center;
+
+   &__logo {
+      font-family: Roboto,sans-serif;
+      font-size: 22px;
+      font-weight: 300;
+      text-transform: uppercase;
+      margin-top: 160px;
+      transform: translateY(600px);
+      transition: transform 0s ease;
+
+      &.active {
+         transform: translateY(0);
+         transition: transform 1s ease;
+      }
+   }
+
+   &__gif {
+      width: 50px;
+      margin: 320px auto;
+      transform: translateY(600px);
+      transition: transform 0s ease;
+      
+      img {
+         width: 50px;
+      }
+
+      &.active {
+         transform: translateY(0);
+         transition: transform 1s ease 1s;
+      }
+   }
+}
+
+.preloader.active {
+   transform: translateY(-100%);
+   transition: transform 1s ease;
+}
 
 .header {
    position: fixed;
@@ -339,7 +390,7 @@ a, a:focus, a:hover {
    border-bottom: 1px solid #e3e3e3;
    z-index: 3;
    position: relative;
-   transform: translateY(20%);
+   transform: translateY(30%);
    opacity: 0;
    transition: all 0.8s ease;
 
@@ -357,6 +408,10 @@ a, a:focus, a:hover {
       display: flex;
       flex-direction: column;
       align-items: center;
+   }
+
+   &__row {
+      display: flex;
    }
 
    &__heading {
@@ -471,6 +526,10 @@ a, a:focus, a:hover {
       margin: 0 0 65px 0;
       text-align: center;
       line-height: 1.4;
+
+      &--mod {
+         display: flex;
+      }
       
    }
 
@@ -508,7 +567,7 @@ a, a:focus, a:hover {
    &__item {
       display: flex;
       flex-direction: column;
-      width: 25%;
+      width: 50%;
       position: relative;
 
       > img {
@@ -778,6 +837,10 @@ a, a:focus, a:hover {
    padding: 30px 0;
    @include shift-by-x(400%);
 
+   &__img {
+      max-height: 700px;
+   }
+
    &__container {
       padding: 0 15px;
       margin: 0 auto;
@@ -910,7 +973,7 @@ a, a:focus, a:hover {
    position: relative;
    background-color: #fff;
    padding: 30px 0;
-   z-index: 3;
+   z-index: 10;
    transform: translateY(20%);
    opacity: 0;
    transition: all 0.4s ease;
@@ -950,6 +1013,7 @@ a, a:focus, a:hover {
    &__row{
       display: flex;
       padding: 10px 15px;
+      flex-wrap: wrap;
    }
 
    &__item {
@@ -1145,11 +1209,15 @@ a, a:focus, a:hover {
          border-color: #777;
          padding: 10px 0;
          border-style: solid;
+         
+         
       }
 
       > textarea {
          background-color: #f0f0f0;
          border-color: #777;
+         min-height: 200px;
+         resize: vertical;
       }
    }
 
@@ -1162,11 +1230,52 @@ a, a:focus, a:hover {
       border: none;
       font-size: 16px;
       cursor: pointer;
+
+      &:hover {
+         background-color: #fcd886;
+      }
+
+      &:active {
+         background-color: #e0a722;
+         transition: all 0.2s ease 0s;
+
+      }
    }
 }
 
 .contact.active {
    @include return-x-position;
+}
+
+.invalid {
+   box-shadow: 0 0 15px red;
+}
+
+.error {
+   color: red;
+   padding: 10px;
+}
+
+
+@mixin message {
+   max-width: 250px;
+   position: fixed;
+   padding: 10px;
+   border-radius: 15px;
+   font-family: Roboto;
+   font-size: 20px;
+   font-weight: 700;
+   left: 30px;
+   bottom: 100px;
+}
+#message--success {
+   border: 2px solid green;
+   @include message;
+}
+
+#message--error {
+   border: 2px solid red;
+   @include message;
 }
 
 .footer {
@@ -1334,3 +1443,245 @@ a, a:focus, a:hover {
    margin: 0 0 45px;
 }
 
+a, a:focus, a:hover {
+   text-decoration: none;
+}
+
+@media (max-width: 1200px) {
+   
+   .header {
+      &__container {
+         padding: 20px 30px;
+      }
+      &__list {
+         li {
+            padding: 5px 5px 0;
+
+         }
+      }
+   }
+
+   .about {
+      padding: 90px 30px 30px;
+   }
+   .parallax {
+      &__column {
+         padding: 0 60px 0;
+      }
+   }
+
+   .news {
+      &__container {
+         padding: 0;
+      }
+   }
+
+   .works {
+      padding: 30px 0;
+   }
+ }
+
+ @media (max-width: 768px) {
+   .header {
+      &__navbar {
+         &:hover nav {
+            display: none;
+         }
+      }
+   }
+
+   .header__navigation--active {
+      display: flex !important;
+
+      ul {
+         padding: 0;
+         width: 100%;
+         position: fixed;
+         top: 60px;
+         left: 0px;
+         display: flex;
+         flex-direction: column;
+         background-color: #fff;
+         li {
+            padding: 0;
+
+            a {
+               display: block;
+                  width: 100%;
+                  padding: 10px 30px;
+
+            }
+
+            &:hover {
+               background-color: #dbd7d7;
+               a {
+                  color: #f2c351;
+                  
+
+
+               }
+            }
+            display: block;
+
+            width: 100%;
+         }
+
+         &::after {
+            content: '';
+            display: block;
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #dbd7d7;
+            position: relative;
+         }
+      }
+
+   }
+
+   .header__navigation--hide {
+      display: none;
+   }
+
+   .parallax {
+      &__row {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+      }
+      &__welcome {
+         text-align: center;
+         font-size: 25px;
+      }
+
+      &__subtitle {
+         font-size: 22px;
+      }
+      &__column {
+         padding: 0 20px;
+      }
+
+      &__btn-black {
+         margin: 10px 0;
+         padding: 20px 40px;
+      }
+   }
+
+   .about {
+      canvas {
+         width: 150px;
+      }
+
+
+      &__heading {
+         font-size: 22px;
+      }
+   }
+
+   .works {
+      &__wrapper {
+         flex-wrap: wrap;
+         justify-content: center;
+      }
+
+      &__heading {
+         font-size: 22px;
+      }
+   }
+
+   .testimonials {
+      &__heading {
+         font-size: 22px;
+      }
+   }
+
+   .team {
+      &__heading {
+         font-size: 22px;
+      }
+
+      &__row {
+         padding: 10px 0;
+      }
+      &__item {
+         padding: 0 15px 15px;
+         width: 50%;
+         img {
+            width: 70px;
+         }
+         figcaption {
+            font-size: 12px;
+         }
+      }
+
+      &__description {
+         top: 110px;
+         width: 100%;
+      }
+    }
+    
+    .contact {
+      &__container {
+         padding: 0;
+      }
+
+      &__heading {
+         font-size: 22px;
+      }
+      &__row {
+         display: flex;
+         flex-direction: column-reverse;
+         align-items: center;
+         &--mod {
+            padding: 10px 10px 0;
+            margin-top: 30px;;
+         }
+      }
+
+      &__form {
+         padding: 0;
+      }
+
+      &__info {
+         display: flex;
+         justify-content: space-around;
+         width: 100%;
+      }
+    }
+
+    .news {
+      &__heading {
+         font-size: 22px;
+      }
+    }
+
+    .footer__columns {
+      width: 100%;
+    }
+
+    .footer {
+      &__wrapper {
+         flex-direction: column;
+         align-items: center
+
+      }
+
+      &__copyright {
+         font-size: 12px;
+      }
+
+    }
+      
+ }
+
+ @media (max-width: 400px) {
+   .works {
+      &__logo {
+         > img {
+            max-width: 70px;
+         }
+      }
+   }
+ }

@@ -1,0 +1,33 @@
+{
+  "name": "lending",
+  "version": "1.0.0",
+  "description": "My lending",
+  "main": "./script/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/v-r-savka/UIcourse_main_task.git"
+  },
+  "author": "V. R. Savka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/v-r-savka/UIcourse_main_task/issues"
+  },
+  "homepage": "https://github.com/v-r-savka/UIcourse_main_task#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "gulp-sass": "^5.0.0",
+    "gulp-scss": "^1.4.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-uglifycss": "^1.1.0",
+    "sass": "^1.45.0"
+  }
+}

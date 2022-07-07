@@ -1,5 +1,6 @@
 'use strict';
 
+
 const items = document.querySelectorAll('.testimonials__item');
 const itemCount = items.length;
 const nextItem = document.querySelector('.testimonials__btn--right');
